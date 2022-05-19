@@ -1,7 +1,8 @@
-package com.messer_amd.listacumparaturilor
+package com.messer_amd.listacumparaturilor.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.messer_amd.listacumparaturilor.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
