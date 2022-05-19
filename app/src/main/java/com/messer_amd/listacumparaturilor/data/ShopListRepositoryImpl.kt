@@ -3,24 +3,30 @@ package com.messer_amd.listacumparaturilor.data
 import com.messer_amd.listacumparaturilor.domain.ShopItem
 import com.messer_amd.listacumparaturilor.domain.ShopListRepository
 
-object ShopListRepositoryImpl: ShopListRepository {
+object ShopListRepositoryImpl : ShopListRepository {
+
+    private val shopList = mutableListOf<ShopItem>()
+
     override fun addShopItem(shopItem: ShopItem) {
-        TODO("Not yet implemented")
+        shopList.add(shopItem)
     }
 
     override fun deleteShopItem(shopItem: ShopItem) {
-        TODO("Not yet implemented")
+        shopList.remove(shopItem)
     }
 
     override fun editShopItem(shopItem: ShopItem) {
-        TODO("Not yet implemented")
+        val oldElement = getShopItem(shopItem.id)
+        shopList.remove(oldElement)
+        addShopItem(shopItem)
     }
 
     override fun getShopItem(shopItemId: Int): ShopItem {
-        TODO("Not yet implemented")
+        return shopList.find { it.id == shopItemId }
+            ?: throw RuntimeException("Element with id $shopItemId not found")
     }
 
     override fun getShopList(): List<ShopItem> {
-        TODO("Not yet implemented")
+        return shopList.toList()
     }
 }
