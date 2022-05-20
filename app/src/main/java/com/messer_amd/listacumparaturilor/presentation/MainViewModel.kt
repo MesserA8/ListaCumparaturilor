@@ -1,10 +1,12 @@
 package com.messer_amd.listacumparaturilor.presentation
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.messer_amd.listacumparaturilor.data.ShopListRepositoryImpl
 import com.messer_amd.listacumparaturilor.domain.DeleteShopItemUseCase
 import com.messer_amd.listacumparaturilor.domain.EditShopItemUseCase
 import com.messer_amd.listacumparaturilor.domain.GetShopListUseCase
+import com.messer_amd.listacumparaturilor.domain.ShopItem
 
 class MainViewModel : ViewModel() {
 
@@ -13,4 +15,11 @@ class MainViewModel : ViewModel() {
     private val getShopListUseCase = GetShopListUseCase(repository)
     private val deleteShopItemUseCase = DeleteShopItemUseCase(repository)
     private val editShopItemUseCase = EditShopItemUseCase(repository)
+
+    val shopList = MutableLiveData<List<ShopItem>>()
+
+    fun getShopList(){
+        val list = getShopListUseCase.getShopList()
+        shopList.value = list
+    }
 }
