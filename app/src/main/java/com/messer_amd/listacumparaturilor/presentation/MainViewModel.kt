@@ -22,4 +22,15 @@ class MainViewModel : ViewModel() {
         val list = getShopListUseCase.getShopList()
         shopList.value = list
     }
+
+    fun deleteShopItem(shopItem: ShopItem){
+        deleteShopItemUseCase.deleteShopItem(shopItem)
+        getShopList()
+    }
+
+    fun changeEnabledState(shopItem: ShopItem){
+        val newItem = shopItem.copy(enabled = !shopItem.enabled)
+        editShopItemUseCase.editShopItem(newItem)
+        getShopList()
+    }
 }
