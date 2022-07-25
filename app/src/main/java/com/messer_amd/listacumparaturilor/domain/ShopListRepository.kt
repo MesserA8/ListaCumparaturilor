@@ -1,5 +1,7 @@
 package com.messer_amd.listacumparaturilor.domain
 
+import androidx.lifecycle.LiveData
+
 interface ShopListRepository {
 
     fun addShopItem(shopItem: ShopItem) //add item
@@ -10,5 +12,5 @@ interface ShopListRepository {
 
     fun getShopItem(shopItemId: Int): ShopItem //get item by id
 
-    fun getShopList(): List<ShopItem> //get list items
+    fun getShopList(): LiveData<List<ShopItem>> //get list items
 }
